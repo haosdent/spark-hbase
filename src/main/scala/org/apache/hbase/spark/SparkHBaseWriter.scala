@@ -149,15 +149,6 @@ class SparkHBaseWriter(conf: HBaseConf)
 }
 
 /**
- * A representation of HBase Column
- * @param family HBase Column Family
- * @param qualifier HBase Column Qualifier
- * @param dataType type [[org.apache.spark.sql.catalyst.types.DataType]]
- */
-class HBaseColumn(val family: Array[Byte], val qualifier: Array[Byte], val dataType: DataType)
-  extends Serializable
-
-/**
  * A representation of HBase Configuration.
  * It contains important parameters which used to create connection to HBase Servers
  * @param zkHost the zookeeper hosts. e.g. "10.232.98.10,10.232.98.11,10.232.98.12"

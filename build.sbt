@@ -8,6 +8,12 @@ scalaVersion := "2.10.4"
 
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "1.2.0" % "provided"
 
+libraryDependencies += "org.apache.hbase" % "hbase" % "0.99.2"
+
+libraryDependencies += "org.apache.hbase" % "hbase-common" % "0.99.2"
+
+libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.99.2"
+
 libraryDependencies += "org.apache.hbase" % "hbase-client" % "0.99.2"
 
 libraryDependencies += "org.apache.avro" % "avro" % "1.7.7" exclude("org.mortbay.jetty", "servlet-api")

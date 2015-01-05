@@ -3,17 +3,21 @@ package org.apache.hbase.spark
 import org.apache.avro.file.DataFileReader
 import org.apache.avro.generic.{GenericRecord, GenericDatumReader}
 import org.apache.avro.mapred.FsInput
+import org.apache.hadoop.conf.Configuration
+import org.apache.hadoop.hbase.HBaseConfiguration
 
 import org.apache.hadoop.fs.{FileSystem, Path}
+import org.apache.hadoop.hbase.mapreduce.TableInputFormat
+import org.apache.spark.rdd.RDD
 
 import org.apache.spark.sql._
 import org.apache.spark.sql.sources.{TableScan, BaseRelation}
 
 import scala.collection.JavaConversions._
 
-case class HBaseRelation(hbaseSite: String)(@transient val sqlContext: SQLContext) extends TableScan {
+case class HBaseRelation(hbaseSite: String, tableName: String, schemaDefine: String)(@transient val sqlContext: SQLContext) extends TableScan {
 
-  val schema = {
+  /*val schema = {
     val fileReader = newReader()
     val convertedSchema = toSqlType(fileReader.getSchema).dataType match {
       case s: StructType => s
@@ -27,7 +31,7 @@ case class HBaseRelation(hbaseSite: String)(@transient val sqlContext: SQLContex
   // By making this a lazy val we keep the RDD around, amortizing the cost of locating splits.
   lazy val buildScan = {
     val baseRdd = sqlContext.sparkContext.hadoopFile(
-      location,
+      hbaseSite,
       classOf[org.apache.avro.mapred.AvroInputFormat[GenericRecord]],
       classOf[org.apache.avro.mapred.AvroWrapper[GenericRecord]],
       classOf[org.apache.hadoop.io.NullWritable],
@@ -46,7 +50,7 @@ case class HBaseRelation(hbaseSite: String)(@transient val sqlContext: SQLContex
   }
 
   private def newReader() = {
-    val path = new Path(location)
+    val path = new Path(hbaseSite)
     val fs = FileSystem.get(path.toUri, sqlContext.sparkContext.hadoopConfiguration)
 
     val status = fs.getFileStatus(path)
@@ -98,6 +102,18 @@ case class HBaseRelation(hbaseSite: String)(@transient val sqlContext: SQLContex
       }
 
       case other => sys.error(s"Unsupported type $other")
+    }
+  }*/
+
+  override def schema: StructType = ???
+
+  lazy val buildScan = {
+    val conf = HBaseConfiguration.create()
+    conf.set(TableInputFormat.INPUT_TABLE, tableName)
+    var hbaseRDD = sqlContext.sparkContext.newAPIHadoopRDD(conf, classOf[TableInputFormat],
+      classOf[org.apache.hadoop.hbase.io.ImmutableBytesWritable],
+      classOf[org.apache.hadoop.hbase.client.Result])
+    hbaseRDD.map { result = >
     }
   }
 }
