@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.databricks.spark.avro
+package org.apache.hbase.spark
 
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.sql.sources.RelationProvider
@@ -25,10 +25,10 @@ import org.apache.spark.sql.sources.RelationProvider
 class DefaultSource extends RelationProvider {
 
   /**
-   * Creates a new relation for data store in avro given a `path` as a parameter.
+   * Creates a new relation for data store in hbase given a `hbase-site` configuration file location as a parameter.
    */
   def createRelation(sqlContext: SQLContext, parameters: Map[String, String]) = {
-    AvroRelation(parameters("hbase-site"))(sqlContext)
+    HBaseRelation(parameters("hbase-site"))(sqlContext)
   }
 }
 

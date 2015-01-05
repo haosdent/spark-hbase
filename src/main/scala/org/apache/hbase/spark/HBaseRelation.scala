@@ -1,5 +1,9 @@
 package org.apache.hbase.spark
 
+import org.apache.avro.file.DataFileReader
+import org.apache.avro.generic.{GenericRecord, GenericDatumReader}
+import org.apache.avro.mapred.FsInput
+
 import org.apache.hadoop.fs.{FileSystem, Path}
 
 import org.apache.spark.sql._
@@ -7,7 +11,7 @@ import org.apache.spark.sql.sources.{TableScan, BaseRelation}
 
 import scala.collection.JavaConversions._
 
-case class HBaseRelation(location: String)(@transient val sqlContext: SQLContext) extends TableScan {
+case class HBaseRelation(hbaseSite: String)(@transient val sqlContext: SQLContext) extends TableScan {
 
   val schema = {
     val fileReader = newReader()
