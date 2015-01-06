@@ -113,7 +113,16 @@ case class HBaseRelation(hbaseSite: String, tableName: String, schemaDefine: Str
     var hbaseRDD = sqlContext.sparkContext.newAPIHadoopRDD(conf, classOf[TableInputFormat],
       classOf[org.apache.hadoop.hbase.io.ImmutableBytesWritable],
       classOf[org.apache.hadoop.hbase.client.Result])
-    hbaseRDD.map { result = >
+    hbaseRDD.map { record =>
+      /*val values = (0 until schema.fields.size).map { i =>
+         match {
+          case u: org.apache.avro.util.Utf8 => u.toString
+          case other => other
+        }
+      }*/
+      val values = HBaseRecord(record._2).toValues()
+
+      Row.fromSeq(values)
     }
   }
 }

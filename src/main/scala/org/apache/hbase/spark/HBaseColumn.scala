@@ -8,6 +8,6 @@ import org.apache.spark.sql.catalyst.types.DataType
  * @param qualifier HBase Column Qualifier
  * @param dataType type [[org.apache.spark.sql.catalyst.types.DataType]]
  */
-class HBaseColumn(val family: Array[Byte], val qualifier: Array[Byte], val dataType: DataType)
+class HBaseColumn(val family: Array[Byte], val qualifier: Array[Byte], val dataType: DataType, val value: Array[Byte])
   extends Serializable
 
