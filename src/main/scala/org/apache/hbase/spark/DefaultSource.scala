@@ -28,9 +28,10 @@ class DefaultSource extends RelationProvider {
    * Creates a new relation for data store in hbase given a `hbase-site` configuration file location as a parameter.
    */
   def createRelation(sqlContext: SQLContext, parameters: Map[String, String]) = {
-    val hbaseSite = parameters("hbase-site")
+    val tableName = parameters("table")
     val schemaDefine = parameters("schema")
-    HBaseRelation(hbaseSite, schemaDefine)(sqlContext)
+    val hbaseSite = parameters("hbase-site")
+    HBaseRelation(tableName, schemaDefine, hbaseSite)(sqlContext)
   }
 }
 
