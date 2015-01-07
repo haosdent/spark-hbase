@@ -13,22 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.databricks.spark.avro
+package org.apache.hbase
 
-import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql.sources.RelationProvider
+import org.apache.spark.sql.{SQLContext, SchemaRDD}
 
-/**
- * Provides access to HBase data from pure SQL statements (i.e. for users of the
- * JDBC server).
- */
-class DefaultSource extends RelationProvider {
+package object spark {
 
   /**
-   * Creates a new relation for data store in avro given a `path` as a parameter.
+   * Adds a method, `hbaseTable`, to SQLContext that allows reading data stored in HBase.
    */
-  def createRelation(sqlContext: SQLContext, parameters: Map[String, String]) = {
-    AvroRelation(parameters("hbase-site"))(sqlContext)
+  implicit class HBaseContext(sqlContext: SQLContext) {
+    def hbaseTable(tableName: String, schemaDefine: String, hbaseSite: String) =
+      sqlContext.baseRelationToSchemaRDD(HBaseRelation(tableName, schemaDefine, hbaseSite)(sqlContext))
+  }
+
+  // TODO:
+  implicit class HBaseSchemaRDD(schemaRDD: SchemaRDD) {
+    def saveAsHBaseTable(path: String): Unit = ???
   }
 }
-
