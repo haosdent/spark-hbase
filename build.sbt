@@ -16,10 +16,6 @@ libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.99.2"
 
 libraryDependencies += "org.apache.hbase" % "hbase-client" % "0.99.2"
 
-libraryDependencies += "org.apache.avro" % "avro" % "1.7.7" exclude("org.mortbay.jetty", "servlet-api")
-
-libraryDependencies += "org.apache.avro" % "avro-mapred" % "1.7.7" exclude("org.mortbay.jetty", "servlet-api")
-
 publishMavenStyle := true
 
 publishTo := {
