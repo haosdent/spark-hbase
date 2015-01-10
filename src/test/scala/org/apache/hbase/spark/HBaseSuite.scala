@@ -19,10 +19,10 @@ package org.apache.hbase.spark
 
 import org.apache.spark.sql.test._
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
-import org.apache.hadoop.hbase.{HConstants, HBaseTestingUtility}
+import org.apache.hadoop.hbase.HBaseTestingUtility
 
 /* Implicits */
-import TestSQLContext._
+import org.apache.spark.sql.test.TestSQLContext._
 
 class HBaseSuite 
   extends FunSuite

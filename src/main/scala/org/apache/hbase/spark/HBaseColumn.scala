@@ -20,8 +20,7 @@ package org.apache.hbase.spark
 import java.io.IOException
 
 import org.apache.hadoop.hbase.util.Bytes
-import org.apache.spark.sql.catalyst.types.DataType
-import org.apache.spark.sql.catalyst.types._
+import org.apache.spark.sql.catalyst.types.{DataType, _}
 
 /**
  * A representation of HBase Column

@@ -16,6 +16,10 @@ libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.99.2"
 
 libraryDependencies += "org.apache.hbase" % "hbase-client" % "0.99.2"
 
+libraryDependencies += "org.apache.hbase" % "hbase-testing-util" % "0.99.2"
+
+libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.99.2" classifier "tests"
+
 publishMavenStyle := true
 
 publishTo := {
@@ -51,5 +55,3 @@ pomExtra := (
 // libraryDependencies += "com.novocode" % "junit-interface" % "0.9" % "test"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.1" % "test"
-
-libraryDependencies += "org.apache.hbase" %% "hbase-testing-util" % "0.99.2" % "test"
