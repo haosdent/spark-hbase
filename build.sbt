@@ -8,17 +8,37 @@ scalaVersion := "2.10.4"
 
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "1.2.0" % "provided"
 
-libraryDependencies += "org.apache.hbase" % "hbase" % "0.99.2"
+libraryDependencies += "org.apache.hbase" % "hbase" % "0.98.9-hadoop2"
 
-libraryDependencies += "org.apache.hbase" % "hbase-common" % "0.99.2"
+libraryDependencies += "org.apache.hbase" % "hbase-common" % "0.98.9-hadoop2"
 
-libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.99.2"
+libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.98.9-hadoop2"
 
-libraryDependencies += "org.apache.hbase" % "hbase-client" % "0.99.2"
+libraryDependencies += "org.apache.hbase" % "hbase-client" % "0.98.9-hadoop2"
 
-libraryDependencies += "org.apache.hbase" % "hbase-testing-util" % "0.99.2"
+libraryDependencies += "org.apache.hbase" % "hbase-hadoop-compat" % "0.98.9-hadoop2"
 
-libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.99.2" classifier "tests"
+libraryDependencies += "org.apache.hbase" % "hbase-hadoop2-compat" % "0.98.9-hadoop2"
+
+libraryDependencies += "org.apache.hadoop" % "hadoop-common" % "2.2.0"
+
+libraryDependencies += "org.apache.hadoop" % "hadoop-hdfs" % "2.2.0"
+
+libraryDependencies += "org.apache.hadoop" % "hadoop-client" % "2.2.0"
+
+libraryDependencies += "org.apache.hadoop" % "hadoop-minicluster" % "2.2.0"
+
+libraryDependencies += "org.apache.hbase" % "hbase-common" % "0.98.9-hadoop2" classifier "tests"
+
+libraryDependencies += "org.apache.hbase" % "hbase-server" % "0.98.9-hadoop2" classifier "tests"
+
+libraryDependencies += "org.apache.hbase" % "hbase-hadoop-compat" % "0.98.9-hadoop2" classifier "tests"
+
+libraryDependencies += "org.apache.hbase" % "hbase-hadoop2-compat" % "0.98.9-hadoop2" classifier "tests"
+
+libraryDependencies += "org.apache.hadoop" % "hadoop-common" % "2.2.0" classifier "tests"
+
+libraryDependencies += "org.apache.hadoop" % "hadoop-hdfs" % "2.2.0" classifier "tests"
 
 publishMavenStyle := true
 
