@@ -1,8 +1,14 @@
 # Spark SQL HBase Library
 
-As @pwendell mentioned, I migrate SPARK-1127 to a new independent project. You could checkout the link and find more details about [Spark SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html).
+Integration utilities for using Spark with Apache HBase data
 
-Would upload code recently.
+
+## Support
+
+- [x] HBase read based scan
+- [ ] HBase write based batchPut
+- [ ] HBase read based analyze HFile
+- [ ] HBase write based bulkload
 
 ## Requirements
 
