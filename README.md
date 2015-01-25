@@ -1,6 +1,6 @@
 # Spark SQL HBase Library
 
-Integration utilities for using Spark with Apache HBase data
+Integration utilities for using Spark with Apache HBase data.
 
 [![Build Status](https://travis-ci.org/haosdent/spark-hbase.svg?branch=master)](https://travis-ci.org/haosdent/spark-hbase)
 
